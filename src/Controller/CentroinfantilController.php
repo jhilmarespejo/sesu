@@ -23,6 +23,8 @@ class CentroinfantilController extends AppController
         $centroinfantil = $this->paginate($this->Centroinfantil);
 
         $this->set(compact('centroinfantil'));
+
+        $this->redirect(['controller'=>'titlesController', 'action'=>'success', $variableValue]);//$variableValue any value you can send.
     }
 
     /**
