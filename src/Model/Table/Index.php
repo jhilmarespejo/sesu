@@ -33,56 +33,56 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Sala[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Sala findOrCreate($search, callable $callback = null, $options = [])
  */
-class SalaTable extends Table
-{
+// class SalaTable extends Table
+// {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        parent::initialize($config);
+//     /**
+//      * Initialize method
+//      *
+//      * @param array $config The configuration for the Table.
+//      * @return void
+//      */
+//     public function initialize(array $config)
+//     {
+//         parent::initialize($config);
 
-        $this->setTable('sala');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+//         $this->setTable('sala');
+//         $this->setDisplayField('id');
+//         $this->setPrimaryKey('id');
 
-    }
+//     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        /*$validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+//     /**
+//      * Default validation rules.
+//      *
+//      * @param \Cake\Validation\Validator $validator Validator instance.
+//      * @return \Cake\Validation\Validator
+//      */
+//     public function validationDefault(Validator $validator)
+//     {
+//         $validator
+//             ->integer('id')
+//             ->allowEmpty('id', 'create');
 
-        $validator
-            ->scalar('nombre')
-            ->maxLength('nombre', 45)
-            ->allowEmpty('nombre');
+//         $validator
+//             ->scalar('nombre')
+//             ->maxLength('nombre', 45)
+//             ->allowEmpty('nombre');
 
-        return $validator;*/
-    }
+//         return $validator;
+//     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        /*$rules->add($rules->existsIn(['centroinfantil_id'], 'Centroinfantil'));
+//     /**
+//      * Returns a rules checker object that will be used for validating
+//      * application integrity.
+//      *
+//      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+//      * @return \Cake\ORM\RulesChecker
+//      */
+//     public function buildRules(RulesChecker $rules)
+//     {
+//         /*$rules->add($rules->existsIn(['centroinfantil_id'], 'Centroinfantil'));
 
-        return $rules;*/
-    }
-}
+//         return $rules;*/
+//     }
+// }

@@ -1,6 +1,5 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
 
 /**
@@ -10,7 +9,7 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\Centroinfantil[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class FormController extends AppController
+class FormularioController extends AppController
 {
 
     /**
@@ -26,8 +25,50 @@ class FormController extends AppController
 
         $this->set(compact('centroinfantil'));
 
-        //$this->redirect(['controller'=>'titlesController', 'action'=>'success', $variableValue]);//$variableValue any value you can send.
+        $this->redirect(['controller'=>'titlesController', 'action'=>'success', $variableValue]);//$variableValue any value you can send.
     }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
+    public function add($id=null)
+    {
+       //pr($this->request->pass['1']);
+        //exit;
+        $this->loadModel('Centroinfantil');
+        $this->loadModel('Sala');
+        
+        $centroinfantil = $this->Centroinfantil->get($id, ['contain' => []]);
+        //$sala = $this->Sala->get( ['where' => []]);
+        $sala = $this->Sala->find()->select(['nombre'])->where(['centroinfantil_id'=>$id])->toList();
+        
+            foreach ($sala as $k => $v) {
+                $salas[$k] = $sala[$k]['nombre'];
+            }
+            
+
+
+        if ($this->request->is('post')) {
+            exit;
+            $centroinfantil = $this->Centroinfantil->patchEntity($centroinfantil, $this->request->getData());
+            if ($this->Centroinfantil->save($centroinfantil)) {
+                $this->Flash->success(__('The centroinfantil has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The centroinfantil could not be saved. Please, try again.'));
+        } 
+        $this->set(['centroinfantil' => $centroinfantil, 'salas' => $salas]);
+       
+        
+
+        // $centroinfantil = $this->Centroinfantil->newEntity();
+
+        // $this->set(compact('centroinfantil'));
+    }
+
 
     /**
      * View method
@@ -45,25 +86,6 @@ class FormController extends AppController
         $this->set('centroinfantil', $centroinfantil);
     }*/
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    /*public function add()
-    {
-        $centroinfantil = $this->Centroinfantil->newEntity();
-        if ($this->request->is('post')) {
-            $centroinfantil = $this->Centroinfantil->patchEntity($centroinfantil, $this->request->getData());
-            if ($this->Centroinfantil->save($centroinfantil)) {
-                $this->Flash->success(__('The centroinfantil has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The centroinfantil could not be saved. Please, try again.'));
-        }
-        $this->set(compact('centroinfantil'));
-    }*/
 
     /**
      * Edit method
@@ -110,3 +132,4 @@ class FormController extends AppController
         return $this->redirect(['action' => 'index']);
     }*/
 }
+?>

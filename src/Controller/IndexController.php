@@ -10,7 +10,7 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\Centroinfantil[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class CentroinfantilController extends AppController
+class IndexController extends AppController
 {
 
     /**
@@ -19,12 +19,14 @@ class CentroinfantilController extends AppController
      * @return \Cake\Http\Response|void
      */
     public function index()
-    {
+    {   
+        $this->loadModel('Centroinfantil');
+
         $centroinfantil = $this->paginate($this->Centroinfantil);
 
         $this->set(compact('centroinfantil'));
 
-       // $this->redirect(['controller'=>'titlesController', 'action'=>'success', $variableValue]);//$variableValue any value you can send.
+        //$this->redirect(['controller'=>'titlesController', 'action'=>'success', $variableValue]);//$variableValue any value you can send.
     }
 
     /**
@@ -34,21 +36,21 @@ class CentroinfantilController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    /*public function view($id = null)
     {
         $centroinfantil = $this->Centroinfantil->get($id, [
             'contain' => ['Sala']
         ]);
 
         $this->set('centroinfantil', $centroinfantil);
-    }
+    }*/
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    /*public function add()
     {
         $centroinfantil = $this->Centroinfantil->newEntity();
         if ($this->request->is('post')) {
@@ -61,7 +63,7 @@ class CentroinfantilController extends AppController
             $this->Flash->error(__('The centroinfantil could not be saved. Please, try again.'));
         }
         $this->set(compact('centroinfantil'));
-    }
+    }*/
 
     /**
      * Edit method
@@ -70,9 +72,8 @@ class CentroinfantilController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    /*public function edit($id = null)
     {
-
         $centroinfantil = $this->Centroinfantil->get($id, [
             'contain' => []
         ]);
@@ -86,7 +87,7 @@ class CentroinfantilController extends AppController
             $this->Flash->error(__('The centroinfantil could not be saved. Please, try again.'));
         }
         $this->set(compact('centroinfantil'));
-    }
+    }*/
 
     /**
      * Delete method
@@ -95,7 +96,8 @@ class CentroinfantilController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    
+    /*public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $centroinfantil = $this->Centroinfantil->get($id);
@@ -106,6 +108,7 @@ class CentroinfantilController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }*/
 }
+
 ?>

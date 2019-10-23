@@ -71,8 +71,13 @@ class CentroinfantilTable extends Table
 
         $validator
             ->scalar('cobertura')
-            ->maxLength('cobertura', 45)
+            ->maxLength('cobertura', 3)
             ->allowEmpty('cobertura');
+
+        $validator
+            ->scalar('convenio')
+            ->maxLength('convenio', 45)
+            ->allowEmpty('convenio');
 
         return $validator;
     }
