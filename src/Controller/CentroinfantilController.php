@@ -51,8 +51,13 @@ class CentroinfantilController extends AppController
     public function add()
     {
         $centroinfantil = $this->Centroinfantil->newEntity();
+
         if ($this->request->is('post')) {
+
+            pr($this->request);
+            exit;
             $centroinfantil = $this->Centroinfantil->patchEntity($centroinfantil, $this->request->getData());
+            
             if ($this->Centroinfantil->save($centroinfantil)) {
                 $this->Flash->success(__('The centroinfantil has been saved.'));
 
